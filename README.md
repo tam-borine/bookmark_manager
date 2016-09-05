@@ -1,3 +1,5 @@
+Bookmark manager.
+
 User stories:
 
 As a user,
@@ -14,4 +16,4 @@ I want to be able to apply a tag to existing/new bookmarks.
 
 As a user,
 So that I can easily search through my bookmarks,
-I want to be able to filter by tags. 
+I want to be able to filter by tags.
