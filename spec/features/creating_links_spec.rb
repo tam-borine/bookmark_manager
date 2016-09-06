@@ -2,9 +2,7 @@ require 'spec_helper'
 
 feature 'creating links' do
   scenario 'when submitting a form' do
-    visit '/links/new'
-    fill_in('title', with: 'Codecademy')
-    fill_in('url', with: 'www.codecademy.com')
+    add_link_no_submit
     click_button('Add Link')
 
     expect(current_path).to eq '/links'
