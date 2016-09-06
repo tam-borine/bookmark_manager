@@ -17,6 +17,5 @@ feature 'filter links by tag' do
          expect(page).to have_content('This is Zombocom')
          expect(page).to have_content('Bubble Bobble')
        end
-
     end
 end
