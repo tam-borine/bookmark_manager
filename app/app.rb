@@ -5,7 +5,11 @@ class Bookmark < Sinatra::Base
 
   get '/links' do
     @links = Link.all
-    erb :index
+    erb :'links/index'
+  end
+
+  get '/links/new' do
+    erb :'links/new'
   end
 
 post '/add-link' do
