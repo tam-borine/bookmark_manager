@@ -8,6 +8,6 @@ class Tag
   property :id,   Serial
   property :name, String
 
-  #has n, :links
+  has n, :links, through: Resource
 
 end
