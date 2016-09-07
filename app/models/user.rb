@@ -9,7 +9,8 @@ class User
   property :id, Serial
   property :name, String
   property :email, String
-]
+  property :password_digest, BCryptHash
+  
   attr_accessor :password_confirmation
   attr_reader :password
 

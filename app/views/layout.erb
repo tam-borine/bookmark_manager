@@ -5,11 +5,8 @@
   </head>
 
   <body>
-    <% if current_user %>
-      Welcome, <%= current_user.name %>
-    <% else %>
-      User does not exist.
-    <% end %>
+    <%= "Welcome, #{current_user.name}" if current_user %>
+    <div id='notice'><%= flash[:notice] if flash[:notice] %></div>
     <%= yield %>  <!-- this then yields to the view which has been called by your controller -->
   </body>
 </html>
