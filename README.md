@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Bookmark Manager
 
 ## User Stories:
@@ -75,3 +76,24 @@ Can use it to manipulate data in database systems such as PostgreSQL
 ## SQL examples for each CRUD action
 
 (see walkthrough for examples of SQL commands that perform CRUD actions)
+=======
+Bookmark manager.
+
+User stories:
+
+As a user,
+So that I can see my bookmarks,
+I want to be able to access previously stored bookmarks.
+
+As a user,
+So that I can add new bookmarks,
+I want to be able to add a URL.
+
+As a user,
+So that I can sort my bookmarks,
+I want to be able to apply a tag to existing/new bookmarks.
+
+As a user,
+So that I can easily search through my bookmarks,
+I want to be able to filter by tags.
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417

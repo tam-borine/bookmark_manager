@@ -62,9 +62,13 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.17)
       data_objects (= 0.10.17)
+<<<<<<< HEAD
     extlib (0.9.16)
     fastercsv (1.5.5)
     highline (1.7.8)
+=======
+    fastercsv (1.5.5)
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
     json (1.8.3)
     json_pure (1.8.3)
     mime-types (3.1)
@@ -75,18 +79,29 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+<<<<<<< HEAD
     pg (0.18.4)
+=======
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+<<<<<<< HEAD
+=======
+    rake (11.2.2)
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
+<<<<<<< HEAD
     rspec-core (3.5.2)
+=======
+    rspec-core (3.5.3)
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -94,18 +109,24 @@ GEM
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+<<<<<<< HEAD
     rspec-sinatra (0.1.2)
       templater (>= 1.0.0)
+=======
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
     rspec-support (3.5.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
     stringex (1.5.1)
+<<<<<<< HEAD
     templater (1.0.0)
       diff-lcs (>= 1.1.2)
       extlib (>= 0.9.5)
       highline (>= 1.4.0)
+=======
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
     tilt (2.0.5)
     uuidtools (2.1.5)
     xpath (2.0.0)
@@ -118,6 +139,7 @@ DEPENDENCIES
   capybara
   data_mapper
   database_cleaner
+<<<<<<< HEAD
   dm-postgres-adapter
   pg
   rspec
@@ -126,6 +148,16 @@ DEPENDENCIES
 
 RUBY VERSION
    ruby 2.3.0p0
+=======
+  dm-migrations
+  dm-postgres-adapter
+  rake
+  rspec
+  sinatra
+
+RUBY VERSION
+   ruby 2.2.3p173
+>>>>>>> f018a42292ba43017d89858f5c8613c6d4d43417
 
 BUNDLED WITH
    1.12.5
