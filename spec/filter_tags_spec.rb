@@ -6,8 +6,8 @@ feature 'Filter tags' do
     1.upto(5) do |n|
       visit 'links/new'
       fill_in('title', with: "Big Bubble#{n}")
-      fill_in("url", with: "www.bigbubble#{n}.com")
-      fill_in("tag", with: 'bubbles')
+      fill_in('url', with: "www.bigbubble#{n}.com")
+      fill_in('tags', with: 'bubbles')
       click_button('submit')
     end
     visit '/tags/bubbles'
