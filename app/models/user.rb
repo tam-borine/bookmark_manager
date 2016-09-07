@@ -9,8 +9,7 @@ class User
   property :id, Serial
   property :name, String
   property :email, String
-  property :password_digest, BCryptHash
-
+]
   attr_accessor :password_confirmation
   attr_reader :password
 
@@ -28,17 +27,9 @@ class User
   # has both the password hash and the salt. We save it to the
   # database instead of the plain password for security reasons.
   def password=(password)
-    # validate_password(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
-
-  private
-
-  # def validate_password(password)
-  #   validates_confirmation_of :password, :confirm => :password_confirmation
-  #   # :message => "Mismatching password. User is not created"
-  # end
 
 
 end
