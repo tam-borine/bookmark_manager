@@ -1,12 +1,13 @@
 require "data_mapper"
 require "dm-postgres-adapter"
-class Tag
+
+class User
 
   include DataMapper::Resource
 
-  property :id,   Serial
+  property :id, Serial
   property :name, String
-
-  has n, :links, through: Resource
+  property :email, String
+  property :password, BCryptHash
 
 end
