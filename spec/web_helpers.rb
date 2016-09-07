@@ -9,3 +9,10 @@ def add_cnn_link
   fill_in('title', with: 'CNN')
   fill_in('url', with: "www.cnn.com")
 end
+
+def add_user_with_no_confirm
+  visit '/users/new'
+  fill_in :name, with: 'Tam'
+  fill_in :email, with: 'tam@tam.com'
+  fill_in :password, with: 'bananas_is_my_password'
+end
