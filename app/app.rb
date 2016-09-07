@@ -6,6 +6,10 @@ require 'bcrypt'
 
 
 class Bookmark < Sinatra::Base
+
+  enable :sessions
+  set :session_secret, 'super secret'
+
   get '/' do
     'Hello Bookmark!'
 
@@ -16,11 +20,10 @@ class Bookmark < Sinatra::Base
   end
 
   post '/users' do
-    my_password = BCrypt::Password.create(params[:password])
-    @user = User.create(name: params[:name], email: params[:email], password: my_password)
-    erb(:'users/index')
+    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+    session[:user_id] = @user.id
+    redirect '/links'
   end
-
 
   get '/links' do
     @links = Link.all
@@ -45,6 +48,12 @@ class Bookmark < Sinatra::Base
     tag = Tag.first(name: params[:name])
     @links = (tag ? tag.links : [])
     erb(:'links/index')
+  end
+
+  helpers do
+   def current_user
+     @current_user ||= User.get(session[:user_id])
+   end
   end
 
   # start the server if ruby file executed directly
