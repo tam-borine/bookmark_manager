@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require_relative './models/link.rb'
+require_relative 'data_mapper_setup.rb'
 
 ENV["RACK_ENV"] ||= "development"
 
@@ -17,7 +17,10 @@ class Bookmark < Sinatra::Base
   end
 
 post '/add-link' do
-  Link.create(:title => params[:title], :url => params[:url])
+  link = Link.new(:title => params[:title], :url => params[:url])
+  tag = Tag.first_or_create(:name => params[:tag])
+  link.tags << tag
+  link.save
   redirect '/links'
 end
   # start the server if ruby file executed directly

@@ -7,6 +7,9 @@ feature 'creating tags' do
     fill_in('title', with: 'Codecademy')
     fill_in('url', with: 'www.codecademy.com')
     fill_in('tag', with: 'coding')
+
     click_button('Add Link')
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('coding')
   end
 end
