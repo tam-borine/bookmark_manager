@@ -20,4 +20,19 @@ feature 'User accounts' do
     expect(User.all).to be_empty
   end
 
+  scenario 'user tries to sign up without email address' do
+    add_user_with_no_email
+    click_button 'Sign up'
+    expect(current_path).to eq ('/users')
+    expect(User.all).to be_empty
+  end
+
+  scenario 'user tries to sign up without email address' do
+    add_user_with_no_email
+    fill_in :email, with: 'sfsfsfs'
+    click_button 'Sign up'
+    expect(current_path).to eq ('/users')
+    expect(User.all).to be_empty
+  end
+
 end

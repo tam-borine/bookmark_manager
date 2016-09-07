@@ -16,3 +16,10 @@ def add_user_with_no_confirm
   fill_in :email, with: 'tam@tam.com'
   fill_in :password, with: 'bananas_is_my_password'
 end
+
+def add_user_with_no_email
+  visit '/users/new'
+  fill_in :name, with: 'Tam'
+  fill_in :password, with: 'bananas_is_my_password'
+  fill_in :password_confirmation, with: 'bananas_is_my_password'
+end

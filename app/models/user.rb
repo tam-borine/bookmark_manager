@@ -8,9 +8,9 @@ class User
 
   property :id, Serial
   property :name, String
-  property :email, String
+  property :email, String, required: true, format: :email_address
   property :password_digest, BCryptHash
-  
+
   attr_accessor :password_confirmation
   attr_reader :password
 
