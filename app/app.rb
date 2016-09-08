@@ -17,42 +17,25 @@ register Sinatra::Flash
     end
   end
 
+  get '/' do
+    redirect '/links'
+  end
+
   get '/links' do
     @links = Link.all
     erb :'links/index'
   end
 
   get '/links/new' do
+    @user = User.new
     erb :'links/new'
   end
 
-  get '/signup' do
-    erb :'/signup'
-  end
-
-  post '/sign-up' do
-    if params[:password] != params[:password_confirmation]
-      session[:username] = params[:username]
-      session[:email] = params[:email]
-      flash[:error] = 'Password and confirmation password do not match'
-      redirect '/signup'
-    else
-      new_user = User.create(:username => params[:username], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
-      session[:user_id] = new_user.id
-      redirect '/welcome'
-    end
-  end
-
-  get '/welcome' do
-    erb :welcome
-  end
-
-  post '/add-link' do
+  post '/links' do
     link = Link.new(:title => params[:title], :url => params[:url])
-
-    all_tags = params[:tag].split(" ")
-    all_tags.each do |tag|
-      link.tags << Tag.first_or_create(:name => tag)
+    tags = params[:tag].split(" ")
+    tags.each do |tag|
+      link.tags << Tag.first_or_create(name: tag)
     end
     link.save
     redirect '/links'
@@ -62,6 +45,26 @@ register Sinatra::Flash
     tag = Tag.first(name: params[:name])
     @links = tag ? tag.links : []
     erb :'links/index'
+  end
+
+  get '/users/new' do
+    erb :'/users/new'
+  end
+
+  post '/users' do
+    @user = User.new(username: params[:username],
+                        email: params[:email],
+                        password: params[:password],
+                        password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/links'
+    else
+      flash.now[:error] = 'Password and confirmation password do not match'
+      flash.now[:username] = params[:username]
+      flash.now[:email] = params[:email]
+      erb :'users/new'
+    end
   end
 
   # start the server if ruby file executed directly

@@ -6,12 +6,11 @@ feature 'registering users' do
     expect { sign_up }.to change(User, :count).by(1)
     new_user = User.first
     expect(new_user.email).to eq('santa@northpole.com')
-    expect(page).to have_content 'Welcome Santa'
+    expect(page).to have_content 'Welcome, Santa'
   end
 
   scenario 'no new users created unless password confirmed' do
     expect{ sign_up(password_confirmation: 'wrong') }.to_not change(User, :count)
-    expect(page).to have_current_path('/signup')
     expect(page).to have_content('Password and confirmation password do not match')
     expect(page).to have_field('username', with: 'Santa')
     expect(page).to have_field('email', with: 'santa@northpole.com')

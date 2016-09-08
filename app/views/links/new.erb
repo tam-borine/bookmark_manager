@@ -1,17 +1,8 @@
 <h1>Add a link</h1>
 
-<form action="/add-link" method="post">
-  <label for="title">
-    Title:
-    <input type="text" name="title">
-  </label>
-  <label for="url">
-      URL:
-      <input type="text" name="url">
-  </label>
-  <label for="tag">
-      TAG:
-      <input type="text" name="tag">
-  </label>
-  <button type="submit">Add Link</button>
+<form action="/links" method="post">
+  <input type="text" name="title" placeholder="Title"/>
+  <input type="text" name="url" placeholder="URL"/>
+  <input type="text" name="tag" placeholder="Tags"/>
+  <input type="submit" value="Add Link"/>
 <form/>

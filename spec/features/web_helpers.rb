@@ -19,7 +19,7 @@
 
   def sign_up(email: 'santa@northpole.com', password: '123456',
               password_confirmation: '123456')
-    visit '/signup'
+    visit '/users/new'
     fill_in('username', with: 'Santa')
     fill_in('email', with: email)
     fill_in('password', with: password)
