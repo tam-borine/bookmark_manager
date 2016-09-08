@@ -11,4 +11,8 @@ feature 'registering users' do
     expect(new_user.email).to eq('erce@erce.com')
     expect(page).to have_content 'Welcome, Erce'
     end
+
+    scenario 'sign up with mismatched password confirmation' do
+      expect { sign_up_confirm_bad }.not_to change(User, :count)
+    end
   end

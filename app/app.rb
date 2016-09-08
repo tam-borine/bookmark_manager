@@ -1,7 +1,6 @@
+ENV["RACK_ENV"] ||= "development"
 require 'sinatra/base'
 require_relative 'data_mapper_setup.rb'
-
-ENV["RACK_ENV"] ||= "development"
 
 class Bookmark < Sinatra::Base
 
@@ -22,7 +21,7 @@ class Bookmark < Sinatra::Base
   end
 
 post '/signup' do
-  new_user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+  new_user = User.create(:username => params[:username], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
   session[:user_id] = new_user.id
   new_user.save
   redirect '/links'
