@@ -18,6 +18,15 @@ class Bookmark < Sinatra::Base
     erb :'links/new'
   end
 
+  get '/signin' do
+    erb :'signin'
+  end
+
+  post '/signin' do
+    params[:name]
+    params[:password]
+  end
+
   get '/signup' do
     @new_user = User.new
     erb :'/signup'
