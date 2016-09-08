@@ -17,11 +17,11 @@
     click_button('Add Link')
   end
 
-  def sign_up(password: '123456',
+  def sign_up(email: 'santa@northpole.com', password: '123456',
               password_confirmation: '123456')
     visit '/signup'
     fill_in('username', with: 'Santa')
-    fill_in('email', with: 'santa@northpole.com')
+    fill_in('email', with: email)
     fill_in('password', with: password)
     fill_in('password_confirmation', with: password_confirmation)
     click_button 'Sign up'

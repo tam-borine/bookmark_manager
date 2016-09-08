@@ -15,7 +15,6 @@ feature 'registering users' do
     expect(page).to have_content('Password and confirmation password do not match')
     expect(page).to have_field('username', with: 'Santa')
     expect(page).to have_field('email', with: 'santa@northpole.com')
-
   end
 
   scenario 'no flash present before signup' do
@@ -23,4 +22,9 @@ feature 'registering users' do
     expect(page).to_not have_content('Password and confirmation password do not match')
   end
 
+  scenario 'user must enter a valid email to sign up' do
+    expect{ sign_up(email: nil) }.to_not change(User, :count)
+    expect{ sign_up(email: 'invalid@email') }.to_not change(User, :count)
+    expect{ sign_up(email: 'invalidemail.com') }.to_not change(User, :count)
+  end
 end
