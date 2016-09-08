@@ -17,4 +17,10 @@ feature 'registering users' do
       expect(page).to have_current_path('/signup')
       expect(page).to have_content('Password and confirmation password do not match')
     end
+
+    scenario 'user leaves email field blank' do
+      expect { sign_up_no_email }.not_to change(User, :count)
+      expect(page).to have_current_path('/signup')
+      expect(page).to have_content('Please enter email!')
+    end
   end

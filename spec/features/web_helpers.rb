@@ -34,3 +34,11 @@
     fill_in('password_confirmation', with: 'not_same')
     click_button 'Sign up'
   end
+
+  def sign_up_no_email
+    visit '/signup'
+    fill_in('username', with: 'Erce')
+    fill_in('password', with: '123456')
+    fill_in('password_confirmation', with: '123456')
+    click_button 'Sign up'
+  end
