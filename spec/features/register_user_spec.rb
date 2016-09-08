@@ -17,7 +17,7 @@ feature 'registering users' do
   end
 
   scenario 'no flash present before signup' do
-    visit '/signup'
+    visit '/users/new'
     expect(page).to_not have_content('Password and confirmation password do not match')
   end
 

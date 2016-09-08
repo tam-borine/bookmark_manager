@@ -2,14 +2,13 @@ require 'sinatra/base'
 require_relative 'data_mapper_setup.rb'
 require 'sinatra/flash'
 
-
 ENV["RACK_ENV"] ||= "development"
 
 class Bookmark < Sinatra::Base
 
-enable :sessions
-set :session_secret, 'super secret'
-register Sinatra::Flash
+  enable :sessions
+  set :session_secret, 'super secret'
+  register Sinatra::Flash
 
   helpers do
     def current_user
