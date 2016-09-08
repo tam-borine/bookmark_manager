@@ -14,5 +14,7 @@ feature 'registering users' do
 
     scenario 'sign up with mismatched password confirmation' do
       expect { sign_up_confirm_bad }.not_to change(User, :count)
+      expect(page).to have_current_path('/signup')
+      expect(page).to have_content('Password and confirmation password do not match')
     end
   end

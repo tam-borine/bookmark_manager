@@ -3,11 +3,11 @@
 <form action="/signup" method="post">
   <label for="username">
     Username:
-    <input type="text" name="username">
+    <input type="text" name="username" value="<%= @new_user.username%>" >
   </label>
   <label for="email">
       Email:
-      <input type="text" name="email">
+      <input type="text" name="email" value="<%= @new_user.email%>">
   </label>
   <label for="password">
       Password:
