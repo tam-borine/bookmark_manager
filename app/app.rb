@@ -29,7 +29,7 @@ set :session_secret, 'super secret'
   end
 
   post '/sign-up' do
-    new_user = User.create(:username => params[:username], :email => params[:email], :password_digest => password=(params[:password]))
+    new_user = User.create(:username => params[:username], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
     session[:user_id] = new_user.id
     redirect '/welcome'
   end

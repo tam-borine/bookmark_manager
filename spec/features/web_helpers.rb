@@ -19,8 +19,9 @@
 
   def sign_up
     visit '/signup'
-    fill_in('username', with: 'Erce')
-    fill_in('email', with: 'erce@erce.com')
+    fill_in('username', with: 'Santa')
+    fill_in('email', with: 'santa@northpole.com')
     fill_in('password', with: '123456')
+    fill_in('password_confirmation', with: '123456')
     click_button 'Sign up'
   end
