@@ -10,15 +10,17 @@ feature 'registering users' do
   end
 
   scenario 'no new users created unless password confirmed' do
-    visit '/signup'
-    fill_in('username', with: 'Santa')
-    fill_in('email', with: 'santa@northpole.com')
-    fill_in('password', with: '123456')
-    fill_in('password_confirmation', with: '234567')
-
-    expect { click_button 'Sign up' }.to_not change(User, :count)
+    expect{ sign_up(password_confirmation: 'wrong') }.to_not change(User, :count)
+    expect(page).to have_current_path('/signup')
+    expect(page).to have_content('Password and confirmation password do not match')
+    expect(page).to have_field('username', with: 'Santa')
+    expect(page).to have_field('email', with: 'santa@northpole.com')
 
   end
 
+  scenario 'no flash present before signup' do
+    visit '/signup'
+    expect(page).to_not have_content('Password and confirmation password do not match')
+  end
 
 end
