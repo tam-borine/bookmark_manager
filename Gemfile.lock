@@ -75,6 +75,7 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    pg (0.18.4)
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -107,6 +108,7 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
+  pg
   rake
   rspec-sinatra
   sinatra
