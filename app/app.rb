@@ -16,6 +16,33 @@ class Bookmark < Sinatra::Base
     end
   end
 
+  get '/users/sign-in' do
+    erb :'/users/sign-in'
+  end
+
+  post '/users/sign-in' do
+    User.authenticate_user(params[:email],params[:password])
+  end
+
+  get '/users/new' do
+    @user = User.new
+    erb :'/users/new'
+  end
+
+  post '/users' do
+    @user = User.new(username: params[:username],
+    email: params[:email],
+    password: params[:password],
+    password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/links'
+    else
+      @errors = @user.errors
+      erb :'users/new'
+    end
+  end
+
   get '/' do
     redirect '/links'
   end
@@ -46,24 +73,6 @@ class Bookmark < Sinatra::Base
     erb :'links/index'
   end
 
-  get '/users/new' do
-    @user = User.new
-    erb :'/users/new'
-  end
-
-  post '/users' do
-    @user = User.new(username: params[:username],
-                        email: params[:email],
-                        password: params[:password],
-                        password_confirmation: params[:password_confirmation])
-    if @user.save
-      session[:user_id] = @user.id
-      redirect '/links'
-    else
-      @errors = @user.errors
-      erb :'users/new'
-      end
-    end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

@@ -26,3 +26,10 @@
     fill_in('password_confirmation', with: password_confirmation)
     click_button 'Sign up'
   end
+
+  def sign_in
+    visit '/users/sign-in'
+    fill_in :email, with: 'santa@northpole.com'
+    fill_in :password, with: '123456'
+    click_button 'Sign in'
+  end
