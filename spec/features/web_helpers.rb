@@ -33,3 +33,8 @@
     fill_in :password, with: '123456'
     click_button 'Sign in'
   end
+
+  def sign_out
+    visit '/links'
+    click_button 'Sign out'
+  end

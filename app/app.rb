@@ -16,6 +16,12 @@ class Bookmark < Sinatra::Base
     end
   end
 
+  get '/users/sign-out' do
+    flash.next[:log_out] = "Goodbye #{session[:user_id].name}"
+    redirect '/links'
+  end
+
+
   get '/users/sign-in' do
     erb :'/users/sign-in'
   end
