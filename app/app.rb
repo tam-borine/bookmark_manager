@@ -21,9 +21,13 @@ class Bookmark < Sinatra::Base
   end
 
   post '/users/sign-in' do
-    User.authenticate_user(params[:email],params[:password])
-    
-    redirect '/links'
+    authenticated_user = User.authenticate_user(params[:email],params[:password])
+    if session[:user_id] = authenticated_user
+      redirect '/links'
+    else
+      flash.now[:errors] = ['The email or password is incorrect']
+      erb :'/users/sign-in'
+    end
   end
 
   get '/users/new' do

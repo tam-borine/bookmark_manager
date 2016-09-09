@@ -28,9 +28,11 @@ class User
   end
 
   def self.authenticate_user(email, login_password)
-    user = first(email: email)
+    raise "email or password incorrect" unless user = first(email: email)
     @db_password = BCrypt::Password.new(user.password_digest)
-    @db_password == login_password
+    if @db_password == login_password
+    return user
+    end
   end
 
 
