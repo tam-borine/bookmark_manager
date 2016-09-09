@@ -6,6 +6,6 @@ feature 'Signing out' do
       sign_up
       sign_in
       sign_out
-      expect(page).to have_content 'Goodbye Santa'
+      expect(page).to have_content 'Goodbye'
     end
 end

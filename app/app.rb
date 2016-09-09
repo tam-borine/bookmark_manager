@@ -7,7 +7,6 @@ ENV["RACK_ENV"] ||= "development"
 class Bookmark < Sinatra::Base
 
   enable :sessions
-  set :session_secret, 'super secret'
   register Sinatra::Flash
 
   helpers do
@@ -17,8 +16,9 @@ class Bookmark < Sinatra::Base
   end
 
   get '/users/sign-out' do
-    flash.next[:log_out] = "Goodbye #{session[:user_id].name}"
-    erb :'users/sign-out'
+    flash.next[:log_out] = "Goodbye"
+    session.clear
+    redirect '/links'
   end
 
 
@@ -27,7 +27,7 @@ class Bookmark < Sinatra::Base
   end
 
   post '/users/sign-in' do
-    authenticated_user = User.authenticate_user(params[:email],params[:password])
+    authenticated_user = User.authenticate_user(params[:email], params[:password])
     if authenticated_user
       session[:user_id] = authenticated_user
       redirect '/links'
