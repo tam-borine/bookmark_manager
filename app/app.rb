@@ -7,7 +7,9 @@ ENV["RACK_ENV"] ||= "development"
 class Bookmark < Sinatra::Base
 
   enable :sessions
+  use Rack::MethodOverride
   register Sinatra::Flash
+
 
   helpers do
     def current_user
@@ -15,9 +17,9 @@ class Bookmark < Sinatra::Base
     end
   end
 
-  get '/users/sign-out' do
-    flash.next[:log_out] = "Goodbye"
+  delete '/users/sign-out' do
     session.clear
+    flash.keep[:notice] = "Goodbye"
     redirect '/links'
   end
 
@@ -29,7 +31,7 @@ class Bookmark < Sinatra::Base
   post '/users/sign-in' do
     authenticated_user = User.authenticate_user(params[:email], params[:password])
     if authenticated_user
-      session[:user_id] = authenticated_user
+      session[:user_id] = authenticated_user.id
       redirect '/links'
     else
       flash.now[:errors] = ['The email or password is incorrect']

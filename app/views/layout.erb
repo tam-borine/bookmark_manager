@@ -8,9 +8,10 @@
     <% if current_user %>
       Welcome, <%= current_user.username %>
 
-      <form action="/users/sign-out" method="get">
-        <input type="submit"
-         name="Sign out" value="Sign out" />
+      <form action="/users/sign-out" method="post">
+        <input type='hidden'
+        name='_method' value='delete'>
+        <input type="submit" value="Sign out" />
       </form>
 
     <% else %>
@@ -31,6 +32,12 @@
       <div id='error'><% @errors.each do |error| %>
         <%= error %> </div> <% end%>
     <% end %>
+
+    <% if flash[:notice] %>
+    <div id='notice'>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
     <%= yield %>
 
