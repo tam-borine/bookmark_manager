@@ -22,6 +22,8 @@ class Bookmark < Sinatra::Base
 
   post '/users/sign-in' do
     User.authenticate_user(params[:email],params[:password])
+    
+    redirect '/links'
   end
 
   get '/users/new' do
