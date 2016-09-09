@@ -4,13 +4,14 @@
   </head>
 
   <body>
-    
+
     <% if current_user %>
       Welcome, <%= current_user.username %>
     <% end %>
 
-    <% if flash[:error] %>
-      <div id='error'><%= flash[:error] %></div>
+    <% if @errors %>
+      <div id='error'><% @errors.each do |error| %>
+        <%= error %> </div> <% end%> 
     <% end %>
 
     <%= yield %>

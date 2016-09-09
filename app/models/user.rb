@@ -9,13 +9,18 @@ class User
 
   property :id, Serial
   property :username, String
-  property :email, String, format: :email_address, required: true
+  property :email, String, format: :email_address, required: true, unique: true, messages: {
+      :presence  => "Please enter your email address",
+      :is_unique => "This email address is already in use"}
   property :password_digest, Text
 
-  validates_confirmation_of :password
+
+  validates_confirmation_of :password, :message => "Password and confirmation password do not match"
+
 
   attr_reader :password
   attr_accessor :password_confirmation
+
 
   def password=(password)
     @password = password

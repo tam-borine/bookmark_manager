@@ -26,7 +26,7 @@ class Bookmark < Sinatra::Base
   end
 
   get '/links/new' do
-    @user = User.new
+
     erb :'links/new'
   end
 
@@ -47,6 +47,7 @@ class Bookmark < Sinatra::Base
   end
 
   get '/users/new' do
+    @user = User.new
     erb :'/users/new'
   end
 
@@ -59,12 +60,10 @@ class Bookmark < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/links'
     else
-      flash.now[:error] = 'Password and confirmation password do not match'
-      flash.now[:username] = params[:username]
-      flash.now[:email] = params[:email]
+      @errors = @user.errors
       erb :'users/new'
+      end
     end
-  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

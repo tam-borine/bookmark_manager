@@ -23,7 +23,14 @@ feature 'registering users' do
 
   scenario 'user must enter a valid email to sign up' do
     expect{ sign_up(email: nil) }.to_not change(User, :count)
+    expect(page).to have_content('Please enter your email address')
     expect{ sign_up(email: 'invalid@email') }.to_not change(User, :count)
     expect{ sign_up(email: 'invalidemail.com') }.to_not change(User, :count)
   end
+
+  scenario 'user cannot register with the same email more than once' do
+    expect{ 2.times do sign_up end}.to change(User, :count).by 1
+    expect(page).to have_content('This email address is already in use')
+  end
+
 end
