@@ -18,7 +18,7 @@ class Bookmark < Sinatra::Base
 
   get '/users/sign-out' do
     flash.next[:log_out] = "Goodbye #{session[:user_id].name}"
-    redirect '/links'
+    erb :'users/sign-out'
   end
 
 
@@ -28,7 +28,8 @@ class Bookmark < Sinatra::Base
 
   post '/users/sign-in' do
     authenticated_user = User.authenticate_user(params[:email],params[:password])
-    if session[:user_id] = authenticated_user
+    if authenticated_user
+      session[:user_id] = authenticated_user
       redirect '/links'
     else
       flash.now[:errors] = ['The email or password is incorrect']
