@@ -5,40 +5,8 @@
 
   <body>
 
-    <% if current_user %>
-      Welcome, <%= current_user.username %>
-
-      <form action="/users/sign-out" method="post">
-        <input type='hidden'
-        name='_method' value='delete'>
-        <input type="submit" value="Sign out" />
-      </form>
-
-    <% else %>
-
-      <form action="/users/new" method="get">
-        <input type="submit"
-          name="Register" value="Register"/>
-      </form>
-
-      <form action="/users/sign-in" method="get">
-        <input type="submit"
-          name="Sign in" value="Sign in"/>
-        </form>
-
-    <% end %>
-
-    <% if @errors %>
-      <div id='error'><% @errors.each do |error| %>
-        <%= error %> </div> <% end%>
-    <% end %>
-
-    <% if flash[:notice] %>
-    <div id='notice'>
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
+    <%= partial :welcome_buttons %>
+    <%= partial :flash %>
     <%= yield %>
 
   </body>

@@ -1,0 +1,10 @@
+<% if @errors %>
+  <div id='error'><% @errors.each do |error| %>
+    <%= error %> </div> <% end%>
+<% end %>
+
+<% if flash[:notice] %>
+<div id='notice'>
+  <%= flash[:notice] %>
+</div>
+<% end %>
